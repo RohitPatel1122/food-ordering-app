@@ -5,9 +5,13 @@ import { useContext } from "react";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const addItemHandler = (item) => {};
-  const removeItemHandler = (id) => {};
   const cartCxt = useContext(CartContext);
+  const addItemHandler = (item) => {
+    cartCxt.addItem({ ...item, amount: 1 });
+  };
+  const removeItemHandler = (id) => {
+    cartCxt.removeItem(id);
+  };
   const cartItems = (
     <ul className={classes["cart-items"]}>
       {cartCxt.items.map((item) => (
